@@ -116,8 +116,8 @@
             <h5 class="card-title">1. Clone o repositório</h5>
             <pre class="mb-3">
               <code>
-                git clone https://github.com/seu-usuario/novo-php-mvc.git
-                cd novo-php-mvc
+                git clone https://github.com/aronisouza/MvcComPainelAdm.git
+                cd MvcComPainelAdm
               </code>
             </pre>
 
