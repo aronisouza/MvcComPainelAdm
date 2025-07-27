@@ -1,0 +1,139 @@
+body {
+    font-family: "Poppins", cursive;
+    font-weight: 400;
+    font-style: normal;
+    line-height: 1.5;
+    scroll-behavior: smooth;
+}
+
+.bd-pontilhado {
+    background-image: url('/Public/Images/fundo-pontilhado.jpg');
+}
+
+.texto-sombra {
+    text-shadow: 2px 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+.bg-base-site {
+    background-color: #0f386e;
+}
+
+.text-justified {
+    text-align: justify;
+}
+
+.GreatVibes {
+    font-family: "Great Vibes", cursive;
+    font-style: normal;
+}
+
+.Suranna {
+    font-family: "Suranna", cursive;
+    font-style: normal;
+}
+
+.CormorantInfant {
+    font-family: "Cormorant Infant", cursive;
+    font-style: normal;
+}
+
+.zinde-1 {
+    z-index: -1;
+}
+
+.zinde-2 {
+    z-index: 2;
+}
+
+.h1 {
+    font-size: 3rem;
+}
+
+.h2 {
+    font-size: 2.4rem;
+}
+
+.h3 {
+    font-size: 1.4rem;
+}
+
+.h4 {
+    font-size: 0.8rem;
+}
+
+.fld-red {
+    color: #e74c3c;
+}
+
+.fld-roxo {
+    color: #8e44ad;
+}
+
+.fld-azul {
+    color: #3498db;
+}
+
+.fld-verde {
+    color: #2ecc71;
+}
+
+.fld-amarelo {
+    color: #f1c40f;
+}
+
+.gradientlogin {
+    color: #fff;
+    height: 100vh;
+    background: linear-gradient(135deg, #2b77b9 0%, #113199 100%);
+}
+
+.gradient-bg {
+    background: linear-gradient(135deg, rgb(43, 103, 201) 0%, rgb(44, 46, 172) 50%, rgb(18, 11, 139) 100%);
+}
+
+.gradient-bg-2 {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.gradient-bg-3 {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+.gradient-bg-4 {
+    background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+}
+
+.card-hover {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-hover:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+footer {
+    background: linear-gradient(135deg, #436fe9 0%, #110f9b 100%);
+    color: #fff;
+    padding: 3rem 0;
+}
+
+.social-icons a {
+    font-size: 1.25rem;
+}
+
+.feature-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #0d6efd;
+}
+
+.nav-pills .nav-link.active {
+    background-color: #0d6efd;
+}
+
+pre {
+    background: #f8f9fa;
+    padding: 1rem;
+    border-radius: 0.25rem;
+}
