@@ -60,5 +60,14 @@ class Controller {
         header("Location: {$redirectUrl}");
         exit;
     }
+
+    
+    protected function checklogin()
+    {
+        if (!isset($_SESSION['role']) && $_SESSION['role'] != 'admin') {
+            $this->render('Controlador/Login');
+            return;
+        }
+    }
     
 }
