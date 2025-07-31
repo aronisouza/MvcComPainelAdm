@@ -7,5 +7,4 @@ class ControladorController extends Controller
         $this->checklogin();
         $this->render('Controlador/home');
     }
-
 }

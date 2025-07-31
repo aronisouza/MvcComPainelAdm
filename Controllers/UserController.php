@@ -4,15 +4,16 @@ class UserController extends Controller
 {
     public function index()
     {
+        $this->checklogin();
         // Lista todos os usuários
         $userModel = new UserModel();
         $users = $userModel->getAllUsers();
-
         $this->render('/Controlador/Paginas/usuarios', ['users' => $users]);
     }
 
     public function create()
-    {       
+    {
+         $this->checklogin();
         // Valida o token CSRF
         if (!$this->validateCsrfToken($_POST['csrf_token'] ?? '')) {
             $this->setErrorAndRedirect(
@@ -70,8 +71,8 @@ class UserController extends Controller
 
     public function edit($idg)
     {
+        $this->checklogin();
         $id = fldCrip($idg, 1);
-        // Recupera o usuário pelo ID
         $userModel = new UserModel();
         $user = $userModel->getUserById($id);
 
@@ -92,6 +93,7 @@ class UserController extends Controller
 
     public function update($idg)
     {
+         $this->checklogin();
         // Valida o token CSRF
         if (!$this->validateCsrfToken($_POST['csrf_token'] ?? '')) {
             http_response_code(403);
@@ -151,6 +153,7 @@ class UserController extends Controller
 
     public function delete($idg)
     {
+         $this->checklogin();
         $id = fldCrip($idg, 1);
         // Exclui um usuário do banco de dados
         $userModel = new UserModel();

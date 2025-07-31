@@ -69,7 +69,6 @@ class Controller
     protected function checklogin()
     {
         if (!isset($_SESSION['role']) && $_SESSION['role'] != 'admin') {
-
             $this->setErrorAndRedirect(
                 "Requisição inválida. Visitante enviado para Home do Site.",
                 "/",

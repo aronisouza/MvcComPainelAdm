@@ -16,8 +16,6 @@ class LoginController extends Controller
                 "Erro de Segurança"
             );
         }
-        fldPre($_POST);
-
         $r = new LoginModel();
         $user = $r->login($_POST['email'], $_POST['password']);
         if (empty($user)) :
