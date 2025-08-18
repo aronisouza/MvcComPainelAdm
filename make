@@ -3,9 +3,9 @@
 // make
 // Uso: php make [tipo] [Nome] [extra?]
 // Exemplos:
-//   php make.php controller User
-//   php make.php model User
-//   php make.php view Home index
+//   php make controller User
+//   php make model User
+//   php make view Home index
 
 if ($argc < 3) {
     echo "Uso: php make.php [tipo] [Nome] [extra]\n";
