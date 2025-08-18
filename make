@@ -1,6 +1,6 @@
 <?php
 
-// make.php
+// make
 // Uso: php make [tipo] [Nome] [extra?]
 // Exemplos:
 //   php make.php controller User
