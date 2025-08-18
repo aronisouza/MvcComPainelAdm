@@ -56,7 +56,7 @@ header("X-XSS-Protection: 1; mode=block");
 header("X-Content-Type-Options: nosniff");
 
 require_once __DIR__ . '/autoload.php';
-require_once __DIR__ . '/functions.php';
+require_once __DIR__ . '/helpers.php';
 
 loadEnv();
 

@@ -5,18 +5,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= getenv('SITE_TITLE'); ?></title>
-    <link rel="icon" href="/../../Public/Images/as-logo.png" sizes="32x32">
+    <link rel="icon" href="./../../Public/Images/as-logo.png" sizes="32x32">
     <!-- Link com todas as fontes tipográficas normais -->
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Great+Vibes&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Suranna&display=swap" rel="stylesheet">
     <!-- Link separado apenas para os ícones Material Symbols -->
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/../../Public/Css/bootstrap.css">
-    <link rel="stylesheet" href="/../../Public/Css/controleCss.css">
-    <link rel="stylesheet" href="/../../Public/Css/base.css">
-    <script src="/../../Public/Js/jquery-3.6.4.min.js"></script>
-    <script src="/../../Public/Js/sweetalert2.js"></script>
-    <script src="/../../Public/Js/Chartjs-v4.4.7.js"></script>
-    <script src="/../../Public/Js/alertas.js"></script>
+    <link rel="stylesheet" href="./../../Public/Css/bootstrap.css">
+    <link rel="stylesheet" href="./../../Public/Css/controleCss.css">
+    <link rel="stylesheet" href="./../../Public/Css/base.css">
+    <link rel="stylesheet" href="./../../Public/Css/animacao.css">
+
+    <script src="./../../Public/Js/jquery-3.6.4.min.js"></script>
+    <script src="./../../Public/Js/sweetalert2.js"></script>
+    <script src="./../../Public/Js/Chartjs-v4.4.7.js"></script>
+    <script src="./../../Public/Js/alertas.js"></script>
 </head>
 
 <body class="bd-pontilhado text-black">
@@ -31,13 +33,13 @@
             <div class="col-3">
                 <?= fldIco("taunt", 50, "text-white"); ?>
             </div>
-            <div class="col">
-                <h4 class="logo-text mb-0">FLD Controle</h4>
-                <p class="text-muted small hide-on-collapse">Dashboard</p>
+            <div class="col hide-on-collapse">
+                <h4 class="logo-text">FLD Controle</h4>
+                <p class="text-muted small">Dashboard</p>
             </div>
         </div>
 
-        <div class="nav flex-column">
+        <div class="nav flex-column seting-section">
             <a href="/Controle/Usuario" class="sidebar-link d-inline-flex align-items-center text-decoration-none p-3 gap-2">
                 <?= fldIco("user_attributes", 27, "text-white"); ?>
                 <span class="hide-on-collapse">Usuáios</span>
@@ -80,16 +82,31 @@
         </div>
     </main>
 
-    <script>
-        function toggleSidebar() {
-            const sidebar = document.querySelector('.sidebar');
-            sidebar.classList.toggle('collapsed');
-        }
-    </script>
-
     <script src="/../../Public/Js/jquery-3.6.4.min.js"></script>
     <script src="/../../Public/Js/bootstrap.bundle.min.js"></script>
     <script src="/../../Public/Js/Chartjs-v4.4.7.js"></script>
+    <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", function() {
+            const toggleBtn = document.querySelector(".toggle-btn");
+            const sidebar = document.querySelector("nav.sidebar");
+
+            // Recupera o estado salvo no localStorage
+            const isCollapsed = localStorage.getItem("sidebarCollapsed") === "true";
+
+            // Aplica o estado salvo
+            if (isCollapsed) {
+                sidebar.classList.add("collapsed");
+            }
+
+            toggleBtn.addEventListener("click", function() {
+                sidebar.classList.toggle("collapsed");
+
+                // Salva o novo estado
+                const isNowCollapsed = sidebar.classList.contains("collapsed");
+                localStorage.setItem("sidebarCollapsed", isNowCollapsed);
+            });
+        });
+    </script>
 </body>
 
 </html>

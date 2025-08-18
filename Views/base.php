@@ -28,7 +28,7 @@
                 </div>
                 <?php if (isset($_SESSION['role']) && $_SESSION['role'] == 'admin'): ?>
                     <div class="d-flex">
-                        <a href="/Controle"><?= fldIco("settings_account_box", 30, "text-dark"); ?></a>
+                        <a href="/Controle" class="bounce"><?= fldIco("settings_account_box", 30, "text-dark"); ?></a>
                     </div>
                 <?php endif; ?>
             </div>

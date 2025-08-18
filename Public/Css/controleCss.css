@@ -92,6 +92,12 @@ body {
 .collapsed .hide-on-collapse {
     opacity: 0;
     visibility: hidden;
+    width: 0 !important;
+    height: auto;
+    overflow: hidden;
+    white-space: nowrap;
+    transition: opacity 0.3s ease, width 0.3s ease;
+    display: inline-block;
 }
 
 .collapsed .logo-text {

@@ -86,7 +86,6 @@
         text-decoration: underline;
     }
 </style>
-
 <div class="login-container">
     <h2>Login</h2>
     <form class="login-form" action="/login/post" method="POST">
