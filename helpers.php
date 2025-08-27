@@ -27,6 +27,13 @@ function siteUrl()
   return getenv('SITE_URL');
 }
 
+function fld_url($caminho)
+{
+  $urlCompleta = getenv('SITE_URL') . '/' . $caminho;
+  return $urlCompleta;
+}
+
+
 function token()
 {
   return "<input type='hidden' name='csrf_token' value='" . generateCsrfToken() . "'>";
@@ -56,7 +63,7 @@ function fldPre($string , $die = false)
  */
 function fldCrip($caracter, $tipo)
 {
-  $key = 'fsGTdfTHGJHFHSDFEFDS';
+  $key = '7K9f$2pL!xQ5@vR8zW3nE6mT1gH4jY0cF';
   $iv = '2500910555066936';
   $method = 'AES-256-CBC';
   if ($tipo == 0) {

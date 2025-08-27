@@ -2,7 +2,7 @@
   <p class="display-4 fw-bold h2">Filid-MVC</p>
   <p class="lead">Um framework PHP simples e eficiente para desenvolvimento web</p>
   <div class="mt-4">
-    <a href="#instalacao" class="btn btn-primary btn-lg px-4 me-2">Começar</a>
+    <a href="#instalacao" class="btn btn-primary btn-lg px-4 me-2 animate-bounce delay-2s">Começar</a>
     <a href="https://github.com/aronisouza/MvcComPainelAdm" class="btn btn-outline-light btn-lg px-4"
       target="_blank">
       <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
@@ -51,7 +51,9 @@
           <a class="nav-link" href="#uso">Uso</a>
           <a class="nav-link" href="#mensagem">Envio de Mensagens</a>
           <a class="nav-link" href="#seguranca">Segurança</a>
+          
         </nav>
+        <a class="btn btn-link text-decoration-none animate-pulse-slow" href="animate.html">Animações</a>
       </div>
     </div>
 

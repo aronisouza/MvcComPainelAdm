@@ -1,6 +1,17 @@
 <?php
 session_start();
 
+// Cabeçalhos de segurança
+header("X-XSS-Protection: 1; mode=block");
+header("X-Content-Type-Options: nosniff");
+header("Referrer-Policy: strict-origin-when-cross-origin");
+header("Permissions-Policy: geolocation=(), microphone=()");
+
+require_once __DIR__ . '/autoload.php';
+require_once __DIR__ . '/helpers.php';
+
+loadEnv();
+
 // Configuração do manipulador de exceções
 set_exception_handler(function ($exception) {
     logError($exception->getMessage() . ' in ' . $exception->getFile() . ' on line ' . $exception->getLine());
@@ -51,14 +62,6 @@ set_error_handler(function ($errno, $errstr, $errfile, $errline) {
 
     return true;
 });
-
-header("X-XSS-Protection: 1; mode=block");
-header("X-Content-Type-Options: nosniff");
-
-require_once __DIR__ . '/autoload.php';
-require_once __DIR__ . '/helpers.php';
-
-loadEnv();
 
 $router = new Router();
 
