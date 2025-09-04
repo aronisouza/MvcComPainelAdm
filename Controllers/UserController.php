@@ -8,12 +8,12 @@ class UserController extends Controller
         // Lista todos os usuários
         $userModel = new UserModel();
         $users = $userModel->getAllUsers();
-        $this->render('/Controlador/Paginas/usuarios', ['users' => $users]);
+        $this->render('/Controlador/Paginas/usuarios', ['users' => $users, 'pagina' => "User"]);
     }
 
     public function create()
     {
-         $this->checklogin();
+        $this->checklogin();
         // Valida o token CSRF
         if (!$this->validateCsrfToken($_POST['csrf_token'] ?? '')) {
             $this->setErrorAndRedirect(
@@ -53,7 +53,7 @@ class UserController extends Controller
 
         $userModel = new UserModel();
         $result = $userModel->createUser($data);
-        
+
         if ($result) {
             $this->setSuccessAndRedirect(
                 "Usuário criado com sucesso!",
@@ -88,12 +88,12 @@ class UserController extends Controller
         }
 
         // Passa o usuário para a view
-        $this->render('/Controlador/Paginas/userEdit', ['user' => $user]);
+        $this->render('/Controlador/Paginas/userEdit', ['user' => $user, 'pagina' => "User"]);
     }
 
     public function update($idg)
     {
-         $this->checklogin();
+        $this->checklogin();
         // Valida o token CSRF
         if (!$this->validateCsrfToken($_POST['csrf_token'] ?? '')) {
             http_response_code(403);
@@ -135,7 +135,7 @@ class UserController extends Controller
         $data = $_POST;
         $userModel = new UserModel();
         $result = $userModel->updateUser($id, $data);
-        
+
         if ($result) {
             $this->setSuccessAndRedirect(
                 "Usuário atualizado com sucesso!",
@@ -153,12 +153,12 @@ class UserController extends Controller
 
     public function delete($idg)
     {
-         $this->checklogin();
+        $this->checklogin();
         $id = fldCrip($idg, 1);
         // Exclui um usuário do banco de dados
         $userModel = new UserModel();
         $result = $userModel->deleteUser($id);
-        
+
         if ($result) {
             $this->setSuccessAndRedirect(
                 "Usuário excluído com sucesso!",
@@ -173,5 +173,4 @@ class UserController extends Controller
             );
         }
     }
-
 }

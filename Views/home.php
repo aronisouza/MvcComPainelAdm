@@ -51,7 +51,7 @@
           <a class="nav-link" href="#uso">Uso</a>
           <a class="nav-link" href="#mensagem">Envio de Mensagens</a>
           <a class="nav-link" href="#seguranca">Segurança</a>
-          
+
         </nav>
         <a class="btn btn-link text-decoration-none animate-pulse-slow" href="animate.html">Animações</a>
       </div>
@@ -78,21 +78,25 @@
         <div class="card mb-4">
           <div class="card-body">
             <pre class="mb-0">
-              filidmvc/
-              ├── Configs/           # Arquivos de configuração
-              ├── Controllers/       # Controladores da aplicação
-              ├── Core/              # Classes principais do framework
-              ├── Migrations/        # Criar e modificar tabelas no banco
-              ├── Models/            # Modelos e lógica de negócios
-              ├── Public/            # Arquivos públicos (CSS, JS, imagens)
-              ├── Views/             # Arquivos de visualização
-              │   ├── Controlador/   # Um Dashboard para Gerenciar o site com login
-              │   └── errors/        # Páginas de erro
-              ├── .env               # Variáveis de ambiente
-              ├── .htaccess          # Configurações do Apache
-              ├── autoload.php       # Carregador automático de classes
-              ├── functions.php      # Funções auxiliares
-              └── index.php          # Ponto de entrada da aplicação
+              MVC/
+                ├── Configs/                # Arquivos de configuração
+                ├── Controllers/            # Controladores da aplicação
+                ├── Core/                   # Classes principais do framework
+                ├── logs/                   # Salva os erros em log
+                ├── Migrations/             # Tabelas do Banco
+                ├── Models/                 # Modelos e lógica de negócios
+                ├── Public/                 # Arquivos públicos (CSS, JS, imagens)
+                ├── Views/                  # Arquivos de visualização
+                │   ├── Controlador/        # Pastas principal da Dashboard
+                │   │  └── User             # Páginas de Usuários
+                │   └── errors/             # Páginas de erro
+                ├── .env                    # Variáveis de ambiente
+                ├── .htaccess               # Configurações do Apache
+                ├── autoload.php            # Carregador automático de classes
+                ├── helpers.php             # Funções auxiliares
+                ├── index.php               # Ponto de entrada da aplicação
+                ├── make                    # CLI básica para criar Controllers, Models e Views
+                └── migrate                 # Roda as Migrations
             </pre>
           </div>
         </div>

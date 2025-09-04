@@ -27,7 +27,7 @@
     <?php displaySuccessMessage(); ?>
 
     <nav class="sidebar d-flex flex-column flex-shrink-0 position-fixed">
-        <button class="toggle-btn d-inline-flex align-items-center" onclick="toggleSidebar()">
+        <button class="toggle-btn d-inline-flex align-items-center">
             <?= fldIco("arrow_menu_close", 27, "text-dark"); ?>
         </button>
         <div class="row pt-5 pb-2">
@@ -36,18 +36,23 @@
             </div>
             <div class="col hide-on-collapse">
                 <h4 class="logo-text">FLD Controle</h4>
-                <p class="text-muted small">Dashboard</p>
+                <a href="/Controle" class="d-inline-flex align-items-center text-decoration-none <?= $pagina == "Dashboard" ? 'animate-pulse-slow' : ''; ?>">
+                    <span class="hide-on-collapse">Dashboard</span>
+                    <?= $pagina == "Dashboard" ? fldIco("visibility", 20, "text-white ms-5 hide-on-collapse") : ''; ?>
+                </a>
             </div>
         </div>
 
         <div class="nav flex-column seting-section">
-            <a href="/Controle/Usuario" class="sidebar-link d-inline-flex align-items-center text-decoration-none p-3 gap-2">
+            <a href="/Controle/Usuario" class="sidebar-link d-inline-flex align-items-center text-decoration-none p-3 gap-2 <?= $pagina == "User" ? 'animate-pulse-slow' : ''; ?>">
                 <?= fldIco("user_attributes", 27, "text-white"); ?>
                 <span class="hide-on-collapse">Usuáios</span>
+                <?= $pagina == "User" ? fldIco("visibility", 20, "text-white ms-5 hide-on-collapse") : ''; ?>
             </a>
             <a href="#" class="sidebar-link d-inline-flex align-items-center text-decoration-none p-3 gap-2">
                 <?= fldIco("arrow_menu_close", 27, "text-white"); ?>
                 <span class="hide-on-collapse">Products</span>
+                <?= $pagina == "User" ? fldIco("visibility", 20, "text-white ms-5 hide-on-collapse") : ''; ?>
             </a>
         </div>
 
@@ -55,10 +60,6 @@
             <a href="/" class="sidebar-link d-inline-flex align-items-center text-decoration-none p-3 gap-2">
                 <?= fldIco("captive_portal", 27, "text-white"); ?>
                 <span class="hide-on-collapse">Site</span>
-            </a>
-            <a href="#" class="sidebar-link d-inline-flex align-items-center text-decoration-none p-3 gap-2">
-                <?= fldIco("settings", 27, "text-white"); ?>
-                <span class="hide-on-collapse">Settings</span>
             </a>
         </div>
 

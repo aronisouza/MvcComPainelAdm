@@ -1,20 +1,27 @@
 <?php
-
-class Delete extends CRUD {
-
-    public function ExeDelete(string $Tabela, string $Termos, string $ParseString = ''): void {
-        $this->Tabela = $Tabela;
-        $this->validateTable();
-
-        if (empty($Termos)) {
-            throw new Exception("Termos (WHERE) não podem ser vazios para DELETE.");
+class Delete extends CRUD
+{
+    /**
+     * Executa uma exclusão no banco de dados
+     * 
+     * @param string $tabela Nome da tabela
+     * @param string $termos Termos da consulta (WHERE, etc.)
+     * @param string $parseString String de parâmetros
+     * @return bool
+     */
+    public function ExeDelete($tabela, $termos, $parseString)
+    {
+        $this->tabela = $this->validarTabela($tabela);
+        $this->termos = $termos;
+        $this->places = $this->parsePlaces($parseString);
+        
+        $query = "DELETE FROM {$this->tabela} {$this->termos}";
+        
+        if ($this->executeQuery($query, $this->places)) {
+            $this->result = true;
+            return true;
         }
-
-        if ($ParseString) {
-            $this->setPlaces($ParseString);
-        }
-
-        $this->Query = "DELETE FROM {$this->Tabela} {$Termos}";
-        $this->Execute();
+        
+        return false;
     }
 }

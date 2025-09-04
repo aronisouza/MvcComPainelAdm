@@ -3,12 +3,12 @@
 // make.php
 // Uso: php make [tipo] [Nome] [extra?]
 // Exemplos:
-//   php make.php controller User
-//   php make.php model User
-//   php make.php view Home index
+//   php make controller User
+//   php make model User
+//   php make view Home index
 
 if ($argc < 3) {
-    echo "Uso: php make.php [tipo] [Nome] [extra]\n";
+    echo "Uso: php make [tipo] [Nome] [extra]\n";
     echo "Tipos disponíveis:\n";
     echo "  controller NomeController\n";
     echo "  model NomeModel\n";
@@ -85,8 +85,7 @@ function createModel($name)
 
     class {$name}Model
     {
-        
-    public function get{$name}ById(\$id){
+        public function get{$name}ById(\$id){
             \$read = new Read();
             \$read->ExeRead('{$table}', "WHERE id={\$id}");
             return \$read->getResult();
@@ -125,7 +124,7 @@ function createModel($name)
 function createView($name, $extra)
 {
     if (!$extra) {
-        echo "Uso para view: php make.php view NomeView Pasta/SubpastaOpcional\n";
+        echo "Uso para view: php make view NomeView Pasta/SubpastaOpcional\n";
         exit(1);
     }
 

@@ -1,29 +1,62 @@
 <?php
-// Classe pai CRUD
-abstract class CRUD extends Conexao {
-    protected string $Tabela;
-    protected array $Places = [];
-    protected bool $Result;
+abstract class CRUD extends Conexao
+{
+    protected $tabela;
+    protected $dados;
+    protected $termos;
+    protected $places;
+    protected $result;
+    protected $query;
+    protected $conn;
     
-    protected PDO $Conn;
-    protected PDOStatement $Stmt;
-    protected string $Query;
-
-    // Conexão PDO
-    protected function Connect(): void {
-        $this->Conn = parent::getConn();
+    /**
+     * Construtor - inicializa a conexão
+     */
+    public function __construct()
+    {
+        $this->conn = parent::getConn();
     }
-
-    // Executa query
-    protected function Execute(): void {
-        $this->Connect();
+    
+    /**
+     * Obtém o resultado da operação
+     * 
+     * @return mixed
+     */
+    public function getResult()
+    {
+        return $this->result;
+    }
+    
+    /**
+     * Obtém o número de linhas afetadas
+     * 
+     * @return int
+     */
+    public function getRowCount()
+    {
+        if (isset($this->query)) {
+            return $this->query->rowCount();
+        }
+        return 0;
+    }
+    
+    /**
+     * Prepara e executa uma query
+     * 
+     * @param string $query
+     * @param array $params
+     * @return bool
+     */
+    protected function executeQuery($query, $params = [])
+    {
         try {
-            $this->Stmt = $this->Conn->prepare($this->Query);
-            $this->Stmt->execute($this->Places);
-            $this->Result = true;
-        } catch (PDOException $e) {
-            $this->Result = false;
-            logError("Erro PDO: {$e->getMessage()}");
+            $this->query = $this->conn->prepare($query);
+            $this->query->execute($params);
+            return true;
+        } catch (\PDOException $e) {
+            $this->result = null;
+            logError("Erro PDO: " . preg_replace('/password=[^&]+/', 'password=***', $e->getMessage()));
+
             fldAlertaPersonalizado(
                 "Erro",
                 "<b>Erro ao executar ação no banco:</b><br /> Mensagem: {$e->getMessage()}",
@@ -32,24 +65,67 @@ abstract class CRUD extends Conexao {
             );
         }
     }
-
-    public function getResult(): bool {
-        return $this->Result;
-    }
-
-    public function getRowCount(): int {
-        return $this->Stmt->rowCount();
-    }
-
-    // Define placeholders extras
-    public function setPlaces(string $ParseString): void {
-        parse_str($ParseString, $this->Places);
-    }
-
-    // Validação básica de tabela
-    protected function validateTable(): void {
-        if (empty($this->Tabela)) {
-            throw new Exception("Nome da tabela não pode ser vazio.");
+    
+    /**
+     * Valida o nome da tabela
+     * 
+     * @param string $tabela
+     * @return string
+     */
+    protected function validarTabela($tabela)
+    {
+        if (!preg_match('/^[a-zA-Z0-9_]+$/', $tabela)) {
+            throw new InvalidArgumentException("Nome de tabela inválido: $tabela");
         }
+        return $tabela;
+    }
+    
+    /**
+     * Valida o nome da coluna
+     * 
+     * @param string $coluna
+     * @return string
+     */
+    protected function validarColuna($coluna)
+    {
+        if (!preg_match('/^[a-zA-Z0-9_]+$/', $coluna)) {
+            throw new InvalidArgumentException("Nome de coluna inválido: $coluna");
+        }
+        return $coluna;
+    }
+    
+    /**
+     * Processa a string de parâmetros
+     * 
+     * @param string $parseString
+     * @return array
+     */
+    protected function parsePlaces($parseString)
+    {
+        if (empty($parseString)) {
+            return [];
+        }
+        
+        $places = [];
+        parse_str($parseString, $places);
+        return array_filter($places, 'is_scalar');
+    }
+    
+    /**
+     * Valida os dados antes de operações
+     * 
+     * @param array $dados
+     * @return array
+     */
+    protected function validarDados(array $dados)
+    {
+        $dadosValidados = [];
+        
+        foreach ($dados as $coluna => $valor) {
+            $coluna = $this->validarColuna($coluna);
+            $dadosValidados[$coluna] = $valor;
+        }
+        
+        return $dadosValidados;
     }
 }
